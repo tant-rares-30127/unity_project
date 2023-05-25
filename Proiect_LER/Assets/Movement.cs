@@ -6,7 +6,7 @@ public class Movement : MonoBehaviour
 {
     public float jumpForce = 70.0f;
     public bool isWall = true;
-    public float forceStrenghts = 0.01f;
+    public float forceStrenghts = 0.03f;
     //public Vector3 Vec;
 
     private Rigidbody rb;
@@ -24,31 +24,31 @@ public class Movement : MonoBehaviour
 
         if (Input.GetKey(KeyCode.R))
         {
-            rb.transform.position = (new Vector3(-0.29f, 6.0f, -0.04f));
+            rb.transform.position = (new Vector3(-1.9f, 8.0f, -0.3f));
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
         }
 
         if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
         {
-            this.transform.Translate(new Vector3(-5f, 0f, 0f) * Time.deltaTime, Space.World);
+            this.transform.Translate(new Vector3(-3.5f, 0f, 0f) * Time.deltaTime, Space.World);
 
             if (isWall == true) rb.AddForce(-Vector3.right * forceStrenghts);
         }
          if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
         {
-            this.transform.Translate(new Vector3(5f, 0f, 0f) * Time.deltaTime, Space.World);
+            this.transform.Translate(new Vector3(3.5f, 0f, 0f) * Time.deltaTime, Space.World);
             if (isWall == true) rb.AddForce(Vector3.right * forceStrenghts);
         }
          if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
-            this.transform.Translate(new Vector3(0f, 0f, 5f) * Time.deltaTime, Space.World);
+            this.transform.Translate(new Vector3(0f, 0f, 3.5f) * Time.deltaTime, Space.World);
             if (isWall == true) rb.AddForce(Vector3.forward * forceStrenghts);
 
         }
          if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
-            this.transform.Translate(new Vector3(0f, 0f, -5f) * Time.deltaTime, Space.World);
+            this.transform.Translate(new Vector3(0f, 0f, -3.5f) * Time.deltaTime, Space.World);
             if (isWall == true) rb.AddForce(-Vector3.forward * forceStrenghts);
         }
 
@@ -70,7 +70,7 @@ public class Movement : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Floor"))
         {
-            rb.transform.position = (new Vector3(-0.29f, 6.0f, -0.04f));
+            rb.transform.position = (new Vector3(-1.9f, 8.0f, -0.3f));
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
         }
