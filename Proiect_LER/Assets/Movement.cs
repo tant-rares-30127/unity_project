@@ -9,6 +9,8 @@ public class Movement : MonoBehaviour
     public float forceStrenghts = 0.03f;
     //public Vector3 Vec;
 
+    public Vector3 respawn = new Vector3(-1.9f, 8.0f, -0.3f);
+
     private Rigidbody rb;
    // public float jumpHeight = 7f;
 
@@ -23,6 +25,13 @@ public class Movement : MonoBehaviour
     {
 
         if (Input.GetKey(KeyCode.R))
+        {
+            rb.transform.position = (respawn);
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+        }
+
+        if (Input.GetKey(KeyCode.T))
         {
             rb.transform.position = (new Vector3(-1.9f, 8.0f, -0.3f));
             rb.velocity = Vector3.zero;
@@ -67,6 +76,12 @@ public class Movement : MonoBehaviour
             isWall = true;
         }
 
+        if (collision.gameObject.CompareTag("Checkpoint"))
+        {
+            isWall = true;
+            respawn = this.transform.position;
+        }
+
         if (collision.gameObject.CompareTag("Final"))
         {
             rb.transform.position = (new Vector3(-1.9f, 8.0f, -0.3f));
@@ -76,7 +91,7 @@ public class Movement : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Floor"))
         {
-            rb.transform.position = (new Vector3(-1.9f, 8.0f, -0.3f));
+            rb.transform.position = (respawn);
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
         }
