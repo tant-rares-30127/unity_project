@@ -32,7 +32,6 @@ public class Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
         {
             this.transform.Translate(new Vector3(-3.5f, 0f, 0f) * Time.deltaTime, Space.World);
-
             if (isWall == true) rb.AddForce(-Vector3.right * forceStrenghts);
         }
          if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
@@ -66,6 +65,13 @@ public class Movement : MonoBehaviour
         if(collision.gameObject.CompareTag("Wall"))
         {
             isWall = true;
+        }
+
+        if (collision.gameObject.CompareTag("Final"))
+        {
+            rb.transform.position = (new Vector3(-1.9f, 8.0f, -0.3f));
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
         }
 
         if (collision.gameObject.CompareTag("Floor"))
